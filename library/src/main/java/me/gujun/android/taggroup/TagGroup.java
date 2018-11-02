@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.ArrowKeyMovementMethod;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -419,8 +420,8 @@ public class TagGroup extends ViewGroup {
         return (TagView) getChildAt(index);
     }
 
-    public void checkTag(TagView tagView) {
-        tagView.setChecked(true);
+    public void highlightTag(TagView tagView) {
+        tagView.setHighlighted(true);
     }
 
     /**
@@ -832,6 +833,11 @@ public class TagGroup extends ViewGroup {
             invalidatePaint();
         }
 
+        public void setHighlighted(boolean checked) {
+            isChecked = checked;
+            invalidatePaint();
+        }
+
         /**
          * Call this method to end this tag's INPUT state.
          */
@@ -884,12 +890,20 @@ public class TagGroup extends ViewGroup {
                     }
                 }
             } else {
-                mBorderPaint.setColor(borderColor);
-                mBackgroundPaint.setColor(backgroundColor);
-                setTextColor(textColor);
+                mBorderPaint.setPathEffect(null);
+                if (isChecked) {
+                    mBorderPaint.setColor(checkedBorderColor);
+                    mBackgroundPaint.setColor(checkedBackgroundColor);
+                    setTextColor(checkedTextColor);
+                } else {
+                    mBorderPaint.setColor(borderColor);
+                    mBackgroundPaint.setColor(backgroundColor);
+                    setTextColor(textColor);
+                }
             }
 
             if (isPressed) {
+                Log.d("LOG", "WHAT THE HELL");
                 mBackgroundPaint.setColor(pressedBackgroundColor);
             }
         }

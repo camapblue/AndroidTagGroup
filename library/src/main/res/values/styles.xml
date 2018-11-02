@@ -40,6 +40,12 @@
         <item name="atg_verticalSpacing">5dp</item>
         <item name="atg_horizontalPadding">14dp</item>
         <item name="atg_verticalPadding">4dp</item>
+
+        <item name="atg_checkedBorderColor">#FF3D7F</item>
+        <item name="atg_checkedTextColor">#FFFFFF</item>
+        <item name="atg_checkedMarkerColor">#FF3D7F</item>
+        <item name="atg_checkedBackgroundColor">#FF3D7F</item>
+        <item name="atg_pressedBackgroundColor">#FF99B1</item>
     </style>
 
     <style name="TagGroup.Beauty_Red" parent="TagGroup">
@@ -57,7 +63,6 @@
         <item name="atg_inputTextColor">#DEFFFFFF</item>
         <item name="atg_checkedBorderColor">#FF3D7F</item>
         <item name="atg_checkedTextColor">#FF3D7F</item>
-        <item name="atg_checkedMarkerColor">#FF3D7F</item>
         <item name="atg_checkedBackgroundColor">#FFFFFF</item>
         <item name="atg_pressedBackgroundColor">#FF99B1</item>
     </style>

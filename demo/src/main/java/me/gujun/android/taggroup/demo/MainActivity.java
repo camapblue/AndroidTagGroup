@@ -27,6 +27,8 @@ public class MainActivity extends ActionBarActivity {
     private TagGroup.OnTagClickListener mTagClickListener = new TagGroup.OnTagClickListener() {
         @Override
         public void onTagClick(String tag) {
+            mLargeTagGroup.highlightTag(mLargeTagGroup.getTagAt(1));
+
             Toast.makeText(MainActivity.this, tag, Toast.LENGTH_SHORT).show();
         }
     };
