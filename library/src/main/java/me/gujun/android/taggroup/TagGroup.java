@@ -415,7 +415,7 @@ public class TagGroup extends ViewGroup {
      * @return the tag view at the specified position or null if the position
      * does not exists within this group.
      */
-    protected TagView getTagAt(int index) {
+    public TagView getTagAt(int index) {
         return (TagView) getChildAt(index);
     }
 
@@ -424,7 +424,7 @@ public class TagGroup extends ViewGroup {
      *
      * @return the checked tag view or null if not exists.
      */
-    protected TagView getCheckedTag() {
+    public TagView getCheckedTag() {
         final int checkedTagIndex = getCheckedTagIndex();
         if (checkedTagIndex != -1) {
             return getTagAt(checkedTagIndex);
@@ -437,7 +437,7 @@ public class TagGroup extends ViewGroup {
      *
      * @return the checked tag index, or -1 if not exists.
      */
-    protected int getCheckedTagIndex() {
+    public int getCheckedTagIndex() {
         final int count = getChildCount();
         for (int i = 0; i < count; i++) {
             final TagView tag = getTagAt(i);
