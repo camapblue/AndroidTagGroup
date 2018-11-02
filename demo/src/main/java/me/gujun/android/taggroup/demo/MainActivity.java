@@ -24,10 +24,31 @@ public class MainActivity extends ActionBarActivity {
 
     private TagsManager mTagsManager;
 
+    private TagGroup.TagView mSelectedTagView;
+
     private TagGroup.OnTagClickListener mTagClickListener = new TagGroup.OnTagClickListener() {
         @Override
         public void onTagClick(String tag) {
-            mLargeTagGroup.highlightTag(mLargeTagGroup.getTagAt(1));
+
+
+            String[] tags = mTagsManager.getTags();
+            for (int i = 0 ; i < tags.length ; i++) {
+                if (tags[i].equalsIgnoreCase(tag)) {
+                    TagGroup.TagView tagView = mLargeTagGroup.getTagAt(i);
+                    if (tagView.isChecked()) {
+                        mLargeTagGroup.unhighlightTag(tagView);
+                        mSelectedTagView = null;
+                    } else {
+                        if (mSelectedTagView != null) {
+                            mLargeTagGroup.unhighlightTag(mSelectedTagView);
+                        }
+
+                        mLargeTagGroup.highlightTag(tagView);
+                        mSelectedTagView = tagView;
+                    }
+                    break;
+                }
+            }
 
             Toast.makeText(MainActivity.this, tag, Toast.LENGTH_SHORT).show();
         }

@@ -420,8 +420,16 @@ public class TagGroup extends ViewGroup {
         return (TagView) getChildAt(index);
     }
 
+    public boolean isChecked(TagView tagView) {
+        return tagView.isChecked;
+    }
+
     public void highlightTag(TagView tagView) {
         tagView.setHighlighted(true);
+    }
+
+    public void unhighlightTag(TagView tagView) {
+        tagView.setHighlighted(false);
     }
 
     /**
@@ -653,7 +661,7 @@ public class TagGroup extends ViewGroup {
     /**
      * The tag view which has two states can be either NORMAL or INPUT.
      */
-    class TagView extends TextView {
+    public class TagView extends TextView {
         public static final int STATE_NORMAL = 1;
         public static final int STATE_INPUT = 2;
 
@@ -836,6 +844,10 @@ public class TagGroup extends ViewGroup {
         public void setHighlighted(boolean checked) {
             isChecked = checked;
             invalidatePaint();
+        }
+
+        public boolean isChecked() {
+            return isChecked;
         }
 
         /**
