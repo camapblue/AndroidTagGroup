@@ -419,6 +419,10 @@ public class TagGroup extends ViewGroup {
         return (TagView) getChildAt(index);
     }
 
+    public void checkTag(TagView tagView) {
+        tagView.setChecked(true);
+    }
+
     /**
      * Returns the checked tag view in the group.
      *
