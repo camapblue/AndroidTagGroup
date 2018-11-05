@@ -126,6 +126,8 @@ public class TagGroup extends ViewGroup {
     /** The vertical tag padding, default is 3.0dp. */
     private int verticalPadding;
 
+    private boolean justHighlighted = false;
+
     /** Listener used to dispatch tag change event. */
     private OnTagChangeListener mOnTagChangeListener;
 
@@ -843,6 +845,7 @@ public class TagGroup extends ViewGroup {
 
         public void setHighlighted(boolean checked) {
             isChecked = checked;
+            justHighlighted = checked;
             invalidatePaint();
         }
 
@@ -915,7 +918,6 @@ public class TagGroup extends ViewGroup {
             }
 
             if (isPressed) {
-                Log.d("LOG", "WHAT THE HELL");
                 mBackgroundPaint.setColor(pressedBackgroundColor);
             }
         }
@@ -985,7 +987,7 @@ public class TagGroup extends ViewGroup {
                     bottom - h / 2 + m / 2);
 
             // Ensure the checked mark drawing region is correct across screen orientation changes.
-            if (isChecked) {
+            if (isChecked && !justHighlighted) {
                 setPadding(horizontalPadding,
                         verticalPadding,
                         (int) (horizontalPadding + h / 2.5f + CHECKED_MARKER_OFFSET),

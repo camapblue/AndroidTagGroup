@@ -3,6 +3,7 @@ package me.gujun.android.taggroup.demo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -108,6 +109,13 @@ public class MainActivity extends ActionBarActivity {
         mLargeTagGroup.setTags(tags);
         mBeautyTagGroup.setTags(tags);
         mBeautyInverseTagGroup.setTags(tags);
+
+        if (tags.length > 1) {
+            Log.d("LOG", "DAU PHONG NO OK = " + tags.length);
+            TagGroup.TagView tagView = mLargeTagGroup.getTagAt(1);
+            mLargeTagGroup.highlightTag(tagView);
+            mSelectedTagView = tagView;
+        }
     }
 
     @Override
